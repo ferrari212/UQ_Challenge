@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
             plt.plot(time_steps, Y_out[:, j, k])
 
-        plt.title(f'Feature {j+1} over Time Stamp')
+        plt.title(f'Feature {j+1} over Time Stamp; each line is a specific timestamp')
         plt.xlabel('Time Stamp [i]')
         plt.ylabel('Y')
         plt.legend()
