@@ -7,12 +7,6 @@ import pandas as pd
 # Example usage
 if __name__ == "__main__":
 
-    # Generate random data for demonstration
-    N = 6
-    num_time_steps = 10
-    num_features = N
-    num_samples = 3
-
     # Step 1: Load the output data
     # Load the output data from the CSV file into a pandas DataFrame
     output_file_path = '../output_data/seed_variation/Y_multiple_seeds.csv'
@@ -44,7 +38,6 @@ if __name__ == "__main__":
             row = j % 3
             col = j // 3
             axs[row, col].plot(range(num_samples), Y_out[i, j, :])
-        
             axs[row, col].set_ylabel(f'Feature: {j+1}')
             
         plt.xlabel('Sample Index')
