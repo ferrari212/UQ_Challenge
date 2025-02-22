@@ -1,8 +1,13 @@
+# Importing sys for importing the utils and visualizations_functions folders
+import sys
+sys.path.append('../utils')
+sys.path.append('../visualizations_functions')
+
 import numpy as np
 
 import matplotlib.pyplot as plt
-
-from utils.data_exchange import read_output_file, extract_and_remove_sample_indices
+from data_exchange import read_output_file, extract_and_remove_sample_indices
+from plot_shapes import plot_3d_shapes
 
 import pandas as pd
 import time
@@ -13,13 +18,13 @@ if __name__ == "__main__":
 
     # Make the object for the linear spaces
     array_data_name = [
-            "aleatory_one", 
-            "aleatory_two", 
-            "epistemic_one", 
-            "epistemic_two", 
+            # "aleatory_one", 
+            # "aleatory_two", 
+            # "epistemic_one", 
+            # "epistemic_two", 
             "controller_one", 
-            "controller_two", 
-            "controller_three"
+            # "controller_two", 
+            # "controller_three"
         ]
 
     for data_name in array_data_name:
@@ -46,28 +51,5 @@ if __name__ == "__main__":
         if not os.path.exists(plot_dir):
             os.makedirs(plot_dir)
 
-        # Animation frames
-        frames = []
-
-        # Plot Y in function of X
-        for j in range(Y_out.shape[1]): # for each feature
-
-            plt.figure(figsize=(10, 6))
-
-            time_steps = range(Y_out.shape[0])
-
-            for k in range(Y_out.shape[2]): # for each sample
-
-                plt.plot(time_steps, Y_out[:, j, k])
-
-            plt.title(f'Feature {j} line across time')
-            plt.xlabel('Time Stamp [i]')
-            plt.ylabel('Y')
-            plt.legend()
-            plt.tight_layout(rect=[0, 0.03, 1, 0.95])  # Adjust layout to make room for the title
+        plot_3d_shapes(Y_out, plot_dir, data_name, plot_static=False, plot_interactive=True)
             
-            output_correlation_plot_path = f'{plot_dir}/correlation_feature_{j}_plot_{data_name}_across_time.png'
-            plt.savefig(output_correlation_plot_path)
-            plt.close()
-            end_time = time.time()  # End timing
-           

@@ -1,1 +1,3 @@
 local_model_windows.exe
+*.png
+*.pyc

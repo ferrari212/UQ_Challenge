@@ -11,6 +11,8 @@ import matplotlib.pyplot as plt
 
 import pandas as pd
 
+from utils.data_exchange import extract_and_remove_sample_indices
+
 # Example usage
 if __name__ == "__main__":
 
@@ -36,9 +38,7 @@ if __name__ == "__main__":
         print(f'Simulation output data loaded from {output_file_path}')
 
         # Step 2: Extract unique sample indices (number "N" if using batch input) and remove that column (Column 7 contains sample indices)
-        sample_indices = df[6].unique()  # Extract unique sample indices
-        num_samples = len(sample_indices)
-        df = df.drop(columns=[6])  # Drop the sample index column
+        df, num_samples = extract_and_remove_sample_indices(df)
 
         # Step 3: Reshape the Output Data (6 features, 60 timesteps per simulation)
         # Convert DataFrame to a NumPy array and reshape/transpose to the desired 3D shape (num_time_steps x num features x num_samples)
