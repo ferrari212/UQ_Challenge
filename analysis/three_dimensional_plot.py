@@ -22,9 +22,10 @@ if __name__ == "__main__":
             # "aleatory_two", 
             # "epistemic_one", 
             # "epistemic_two", 
-            "controller_one", 
+            # "controller_one", 
             # "controller_two", 
-            # "controller_three"
+            # "controller_three",
+            "seed_variation"
         ]
 
     for data_name in array_data_name:

@@ -1,8 +1,11 @@
 import numpy as np
 
+import sys
+sys.path.append('../utils')
+
 import matplotlib.pyplot as plt
 
-from utils.data_exchange import read_output_file, extract_and_remove_sample_indices
+from data_exchange import read_output_file, extract_and_remove_sample_indices
 
 import pandas as pd
 import time
@@ -13,13 +16,14 @@ if __name__ == "__main__":
 
     # Make the object for the linear spaces
     array_data_name = [
-            "aleatory_one", 
-            "aleatory_two", 
-            "epistemic_one", 
-            "epistemic_two", 
-            "controller_one", 
-            "controller_two", 
-            "controller_three"
+            # "aleatory_one", 
+            # "aleatory_two", 
+            # "epistemic_one", 
+            # "epistemic_two", 
+            # "controller_one", 
+            # "controller_two", 
+            # "controller_three",
+            "seed_variation"
         ]
 
     for data_name in array_data_name:
