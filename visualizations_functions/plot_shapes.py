@@ -3,7 +3,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import numpy as np
-from mpl_toolkits.mplot3d import Axes3D
 
 def plot_static_shapes(X: np.array, Y: np.array, Z: np.array, plot_dir: str, data_name: str, feature_index: int):
 
@@ -48,12 +47,12 @@ def plot_dynamic_shapes(X: np.array, Y: np.array, Z: np.array, feature_index: in
 
         fig.show()
 
-def plot_3d_shapes(Z_out: np.ndarray, plot_dir: str, data_name: str, plot_static: bool = True, plot_interactive: bool = True):
+def plot_3d_shapes(Z_out: np.ndarray, plot_dir: str, data_name: str, plot_static: bool = True, plot_interactive: bool = True, max_value_variable: int = 1):
 
     for j in range(Z_out.shape[1]): # for each feature
         
         # Create a meshgrid for the X and Y axes
-        X, Y = np.meshgrid(np.linspace(0, 1, Z_out.shape[2]), np.linspace(1, 60, Z_out.shape[0]))
+        X, Y = np.meshgrid(np.linspace(0, max_value_variable, Z_out.shape[2]), np.linspace(1, 60, Z_out.shape[0]))
         Z = np.reshape(Z_out[:, j, :], X.shape) # Reshape the data to match the meshgrid 
 
         if plot_static:

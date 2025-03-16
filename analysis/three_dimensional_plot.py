@@ -18,13 +18,14 @@ if __name__ == "__main__":
 
     # Make the object for the linear spaces
     array_data_name = [
-            # "aleatory_one", 
-            # "aleatory_two", 
-            # "epistemic_one", 
-            # "epistemic_two", 
-            # "controller_one", 
-            # "controller_two", 
-            # "controller_three",
+            "aleatory_one", 
+            "aleatory_two", 
+            "epistemic_one", 
+            "epistemic_two", 
+            "epistemic_three", 
+            "controller_one", 
+            "controller_two", 
+            "controller_three",
             "seed_variation"
         ]
 
@@ -52,5 +53,6 @@ if __name__ == "__main__":
         if not os.path.exists(plot_dir):
             os.makedirs(plot_dir)
 
-        plot_3d_shapes(Y_out, plot_dir, data_name, plot_static=False, plot_interactive=True)
-            
+        max_value_variable = 100 if data_name == "seed_variation" else 1
+
+        plot_3d_shapes(Y_out, plot_dir, data_name, plot_static=True, plot_interactive=False, max_value_variable=max_value_variable)

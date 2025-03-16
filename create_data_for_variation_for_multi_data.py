@@ -10,7 +10,7 @@ import time
 
 # # Step 1: Define input parameters to the model
 # # Define the input vector X_input with the required values
-X_input = np.array([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 42.0])  # Shape will be (9,)
+X_input = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 42.0])  # Shape will be (9,)
 # # Alternatively, the model also supports a batch of N input vectors (as an example, "N" copies of X_input)
 # N = 1001
 N = 101
@@ -31,12 +31,12 @@ array_data_name = [
 
 # Add random noise to the input data
 X_Var = np.linspace(0, 1, N)
-X_Var_seed = np.linspace(0, 100, N).astype(int)
+X_Var_seed = np.linspace(0, 100, N)
 
 for i, data_name in enumerate(array_data_name):
     X_input_batch = X_input_batch_original.copy()
 
-    X_input_batch[:, i] = X_Var if data_name != "seed_variation" else X_Var_seed
+    X_input_batch[:, i] = X_Var if i != 8 else X_Var_seed
 
     # Step 2: Write the input data to a local File (input.txt)
     input_file_path = f'./input_data/input_multiple_{data_name}.txt'

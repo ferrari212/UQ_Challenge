@@ -1,4 +1,5 @@
 local_model_windows.exe
 *.png
 *.pyc
-./output_data
+./output_data/
+./input_data/
